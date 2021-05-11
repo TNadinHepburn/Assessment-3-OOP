@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "dxq1ECmC74kkfJ7KoZd1pknZ5t76o+O6u/YQrRbJK4woIVg2+wBiiBesF9JgnuKNhFEDQc95zSC8EEdc1DKuCg==",
+  "success": true,
+  "projectFilePath": "E:\\_Programming\\University\\oop\\Assessment-3-OOP\\Assessment-3\\Lincoln-Card-Game\\Lincoln-Card-Game.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tom\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

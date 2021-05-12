@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lincoln_Card_Game
 {
-    class Card
+    public class Card
     {
         public string Suit { get; }
         public int Value { get; }
@@ -14,13 +14,16 @@ namespace Lincoln_Card_Game
             Suit = suit;
             Value = value;
         }
+        public static int operator +(Card a, Card b)
+        {
+            return a.Value + b.Value;
+        }
 
         public override string ToString()
         {
-            //outputs the value and suit of a card e.g Value: 6 Suit: Heart
+            //outputs the value and suit of a card e.g Six of Heart's
             return $"{ValueToStr(Value)} ({Value}) of {Suit}'s";
         }
-
         private string ValueToStr(int value)
         {
             string[] strValues =

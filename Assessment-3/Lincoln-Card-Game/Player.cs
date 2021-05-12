@@ -4,7 +4,16 @@ using System.Text;
 
 namespace Lincoln_Card_Game
 {
-    class Player
+    public abstract class Player
     {
+        public Hand Hand { get; }
+        public int Score { get; set; }
+        public abstract int ID { get; protected set; }
+
+        public Player(List<Card> cards)
+        {
+            Hand = new Hand(cards);
+            Score = 0;
+        }
     }
 }

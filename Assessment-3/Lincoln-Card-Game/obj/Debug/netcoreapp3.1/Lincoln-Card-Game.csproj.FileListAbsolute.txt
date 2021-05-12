@@ -1,0 +1,13 @@
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.csprojAssemblyReference.cache
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.AssemblyInfoInputs.cache
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.AssemblyInfo.cs
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.csproj.CoreCompileInputs.cache
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.exe
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.deps.json
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.runtimeconfig.json
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.runtimeconfig.dev.json
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.dll
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\bin\Debug\netcoreapp3.1\Lincoln-Card-Game.pdb
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.dll
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.pdb
+E:\_Programming\University\oop\Assessment-3-OOP\Assessment-3\Lincoln-Card-Game\obj\Debug\netcoreapp3.1\Lincoln-Card-Game.genruntimeconfig.cache

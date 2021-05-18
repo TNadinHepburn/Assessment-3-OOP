@@ -15,5 +15,7 @@ namespace Lincoln_Card_Game
             Hand = new Hand(cards);
             Score = 0;
         }
+
+        public abstract List<Card> PlayCards();
     }
 }

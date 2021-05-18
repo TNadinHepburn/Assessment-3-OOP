@@ -8,56 +8,141 @@ namespace Lincoln_Card_Game
     {
         public static void Main(string[] args)
         {
-            Deck deck = new Deck();
-            deck.Shuffle();
-            Human h = new Human(GetHand(deck, 10));
-            Computer c = new Computer(GetHand(deck, 10));
-            Console.WriteLine(deck.Cards.Count);
-            int scoreAdd = 1;
-            Console.WriteLine(h.Hand);
-            Console.WriteLine(c.Hand);
-
-            while (!h.Hand.IsEmpty() && !c.Hand.IsEmpty())
+            int choice = 0;
+            while (!(choice == 2))
             {
-                for (int i = 0; i < c.Hand.Cards.Count/2; i++)
+                choice = 0;
+                Console.WriteLine($"Lincoln Card Game");
+                while(choice!=1 && choice != 2)
                 {
-                    if ((c.Hand.Cards[i*2]+c.Hand.Cards[i*2+1]) < (h.Hand.Cards[i*2] + h.Hand.Cards[i*2+1]))
+                    Console.Write("1. Play\n2. Quit\n->");
+                    choice = CheckInt(Console.ReadLine());
+                    if (choice!=1 && choice != 2)
                     {
-                        Console.WriteLine($"human wins hand with {h.Hand.Cards[i*2]} and {h.Hand.Cards[i*2+1]}");
-                        h.Score += scoreAdd;
-                        scoreAdd = 1;
-                    }
-                    else if ((c.Hand.Cards[i*2] + c.Hand.Cards[i*2+1]) > (h.Hand.Cards[i*2] + h.Hand.Cards[i*2+1]))
-                    {
-                        Console.WriteLine($"computer wins hand with {c.Hand.Cards[i*2]} and {c.Hand.Cards[i*2+1]}");
-                        c.Score+=scoreAdd;
-                        scoreAdd = 1;
-                    }
-                    else
-                    {
-                        Console.WriteLine($"Hand is a draw - computer:{c.Hand.Cards[i * 2]} and {c.Hand.Cards[i * 2 + 1]} human:{h.Hand.Cards[i * 2]} and {h.Hand.Cards[i * 2 + 1]}");
-                        scoreAdd++;
+                        Console.WriteLine("Please enter 1 to play or 2 to quit");
                     }
                 }
-                break;
+                switch (choice)
+                {
+                    case 1:Game();break;
+                    case 2:Quit();break;
+                }
             }
-            Console.WriteLine($"Scores\nComputer: {c.Score}\nHuman: {h.Score}");
+
         }
 
-
-        public static List<Card> GetHand(Deck deck, int handSize)
+        public static int CheckInt(string input)
         {
-            List<Card> result = new List<Card>();
-            for (int i = 0; i < handSize; i++)
-            {
-                result.Add(deck.Deal());
-            }
-            return result;
+                try
+                {
+                return int.Parse(input);
+                }
+                catch
+                {
+                Console.WriteLine("Please enter a number");
+                return -1;
+                }
+
+            
         }
 
+        public static void Game()
+        {
+            int turnScore = 1;
+            Deck deck = new Deck();
+            deck.Shuffle();
+            Human h = new Human(deck.DealHand());
+            Computer c = new Computer(deck.DealHand());
+            while(!h.Hand.IsEmpty() && !c.Hand.IsEmpty())
+            {
+                turnScore = PlayHand(h,c,turnScore);
+            }
+            while (h.Score == c.Score || turnScore>1)
+            {
+                if (!deck.IsEmpty())
+                {
+                h.Hand.Cards.Add(deck.Deal());
+                c.Hand.Cards.Add(deck.Deal());
+                turnScore = Draw(h, c);
+                }
+                else
+                {
+                    Console.WriteLine("No more cards in deck!");
+                }
+            }
+            Results(h,c);
+        }
 
+        public static int PlayHand(Human human, Computer computer,int addScore)
+        {
+            List<Card> computerCards = computer.PlayCards();
+            Console.WriteLine("-Your Cards-");
+            List<Card> humanCards = human.PlayCards();
+            int humanTotal = humanCards[0] + humanCards[1];
+            int computerTotal = computerCards[0] + computerCards[1];
+            Console.WriteLine($"Human Played: {humanCards[0]} and {humanCards[1]}\nComputer played: {computerCards[0]} and {computerCards[1]}");
 
+            if (humanTotal > computerTotal)
+            {
+                Console.WriteLine("The Human won the hand");
+                human.Score+=addScore;
+            }
+            else if(computerTotal> humanTotal)
+            {
+                Console.WriteLine("The Computer won the hand");
+                computer.Score+=addScore;
+            }
+            else
+            {
+                Console.WriteLine("Hand is a draw");
+                return ++addScore;
+            }
+            return 1;
 
+        }
+
+        public static int Draw(Human human, Computer computer)
+        {
+            Card humanCard = human.Hand.Cards[0];
+            Card computerCard = computer.Hand.Cards[0];
+            int humanTotal = humanCard.Value;
+            int computerTotal = computerCard.Value;
+            Console.WriteLine($"Human Played: {humanCard}\nComputer played: {computerCard}");
+            if (humanTotal > computerTotal)
+            {
+                Console.WriteLine("The Human won the hand");
+                human.Score ++;
+            }
+            else if (computerTotal > humanTotal)
+            {
+                Console.WriteLine("The Computer won the hand");
+                computer.Score ++;
+            }
+            else
+            {
+                Console.WriteLine("Hand is a draw");
+                return 2;
+            }
+            return 1;
+        }
+        public static void Results(Human h, Computer c)
+        {
+            string winner;
+            if (h.Score > c.Score)
+            {
+                winner = "Human";
+            }
+            else
+            {
+                winner = "Computer";
+            }
+            Console.WriteLine($"Results\nHuman scored: {h.Score}\nComputer scored: {c.Score}\nCongratulations to {winner}!");
+        }
+
+        public static void Quit()
+        {
+            Console.WriteLine("Thanks for playing");
+        }
     }
 
 

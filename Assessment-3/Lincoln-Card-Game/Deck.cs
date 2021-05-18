@@ -50,7 +50,16 @@ namespace Lincoln_Card_Game
             Cards.RemoveAt(0);
             return dealtCard;
         }
-
+        public List<Card> DealHand()
+        {
+            List<Card> dealtCards = new List<Card>();
+            for(int i = 0; i < 10; i++)
+            {
+                //copy of card at first index before removing
+                dealtCards.Add(Deal());
+            }
+            return dealtCards;
+        }
 
         public List<Card> GetCards(int size)
         {

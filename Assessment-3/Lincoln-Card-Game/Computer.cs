@@ -13,20 +13,17 @@ namespace Lincoln_Card_Game
             ID = 1;
         }
 
-        public List<Card> PlayCards()
+        public override List<Card> PlayCards()
         {
             List<Card> currentHand = new List<Card>();
+           
             for (int i = 0; i < 2; i++)
             {
-                if (!Hand.IsEmpty())
-                {
-                    currentHand.Add(Hand.Deal());
-                }
-                else
-                {
-                    return null;
-                }
+                 currentHand.Add(Hand.Deal());
             }
+            Hand.Cards.Remove(currentHand[0]);
+            Hand.Cards.Remove(currentHand[1]);
+         
             return currentHand;
         }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lincoln_Card_Game
 {
-    public class Human : Player //inherits from player class
+    public class Human : Player//inherits from player class
     {
         public override int ID { get; protected set; }
 
@@ -13,15 +13,31 @@ namespace Lincoln_Card_Game
             ID = 0;
         }
 
-        public List<Card> PlayCards()
+        public override List<Card> PlayCards()
         {
             List<Card> currentHand = new List<Card>();
             Console.WriteLine(Hand);
             Console.WriteLine("Choose 2 Cards to play");
             for(int i = 0; i < 2; i++)
             {
-                currentHand.Add(Hand.Cards[UserIntValue(i)]);
+                while (true)
+                {
+                    Card card = Hand.Cards[UserIntValue(i + 1) - 1];
+                    if (!currentHand.Contains(card))
+                    {
+                        currentHand.Add(card);
+                            break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Card already selected.");
+                    }
+
+                }
+
             }
+            Hand.Cards.Remove(currentHand[0]);
+            Hand.Cards.Remove(currentHand[1]);
             return currentHand;
         }
 
@@ -35,7 +51,7 @@ namespace Lincoln_Card_Game
                 try
                 {
                     cardIndex = int.Parse(Console.ReadLine());
-                    if(cardIndex < Hand.Cards.Count && cardIndex > 0)
+                    if(cardIndex <= Hand.Cards.Count && cardIndex > 0)
                     {
                     break;
                     }
